@@ -20,14 +20,21 @@ public class KitchenRoom extends Room{
         checker.push("Al Abbas Chicken");
     }
 
-    public String searchObject() {
+     public String searchObject() {
         String temp = roomInv.pop();
+        System.out.println (temp);
         roomInv.push(temp);
         return temp;
     }
 
-    public void pickUp(){
-        inv.add (roomInv.pop());
+    public void pickUp() {
+        if (!roomInv.isEmpty()) {
+            String temp = roomInv.pop();
+            System.out.println(temp);
+            inv.add (temp);
+        } else {
+            System.out.println("There is nothing to pick up.");
+        }
     }
 
     public void eat(String item){
@@ -39,23 +46,19 @@ public class KitchenRoom extends Room{
                 hungry = false;
             }
             
+        } else {
+            System.out.println("Invalid food");
         }
     }
 
     public void move(String direction) {
         if (direction.equals("north")) {
-            if (inv.contains("Engine Key")){
-                location = "Engine Room";
+            location = "Control Room";
+        } else if (direction.equals("west")) {
+            if (!hungry){
+                location = "Lounge Room";
             } else {
-                System.out.println("Locked Door");
-            }
-        } else if (direction.equals("east")) {
-            location = "Bunk Room";
-        } else if (direction.equals("south")) {
-            if (inv.contains("Kitchen Key")){
-                location = "Kitcehn Room";
-            } else {
-                System.out.println("Locked Door");
+                System.out.println("EAT UP");
             }
         } else {
             System.out.println("Where are you trying to go?");

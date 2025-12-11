@@ -4,6 +4,10 @@ import java.util.ArrayList;
 public class Inventory {
     private ArrayList<String> data = new ArrayList<>();
 
+    public Inventory() {
+        // this.data = data;
+    }
+
     public String toString() {
         return data.toString();
     }

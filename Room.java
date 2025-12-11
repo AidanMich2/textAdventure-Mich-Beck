@@ -1,14 +1,19 @@
 public abstract class Room {
-    protected Inventory inv;
-    protected String location = "Control Room";
+    protected static Inventory inv = new Inventory();
+    protected static String location = "Control Room";
+    protected static boolean sleepy = true;
 
-    public Inventory getInventory() {
+    public static Inventory getInventory() {
         return inv;
     }
 
-    public String location() {
+    public static String location() {
         return location;
     }
+
+    // public static String sleepy() {
+    //     return sleepy;
+    // }
 
     public abstract String searchObject();
 
